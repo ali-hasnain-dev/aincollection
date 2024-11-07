@@ -35,15 +35,15 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
-            ->brandName('Posh')
-            ->brandLogo(asset('web/logo2.png'))
-            ->brandLogoHeight('2rem')
+            ->brandName('aincollection')
+            // ->brandLogo(asset('web/logo2.png'))
+            // ->brandLogoHeight('2rem')
             ->favicon(asset('web/logo1.png'))
             ->sidebarCollapsibleOnDesktop(true)
             ->passwordReset()
             ->profile(OverrideEditProfile::class)
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => '#000000',
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
@@ -109,6 +109,7 @@ class AdminPanelProvider extends PanelProvider
                 Platform::Mac => '⌘K',
                 default => null,
             })
+            ->sidebarWidth('17rem')
             ->maxContentWidth(MaxWidth::Full)
             ->spa();
     }
