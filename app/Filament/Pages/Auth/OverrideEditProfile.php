@@ -2,6 +2,7 @@
 
 namespace App\Filament\Pages\Auth;
 
+use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -29,6 +30,6 @@ class OverrideEditProfile extends BaseEditProfile
                 // $this->getEmailFormComponent(),
                 $this->getPasswordFormComponent(),
                 $this->getPasswordConfirmationFormComponent(),
-            ]);
+            ])->lazy();
     }
 }

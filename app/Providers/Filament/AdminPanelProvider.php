@@ -39,6 +39,7 @@ class AdminPanelProvider extends PanelProvider
             // ->brandLogo(asset('web/logo2.png'))
             // ->brandLogoHeight('2rem')
             ->favicon(asset('web/logo1.png'))
+            ->viteTheme('resources/css/filament/admin/theme.css')
             ->sidebarCollapsibleOnDesktop(true)
             ->passwordReset()
             ->profile(OverrideEditProfile::class)
