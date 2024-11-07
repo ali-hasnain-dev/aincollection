@@ -33,4 +33,9 @@ class Product extends Model
     {
         return $this->hasMany(Comment::class, 'product_id');
     }
+
+    public function images()
+    {
+        return $this->morphToMany(Images::class, 'imageable');
+    }
 }

@@ -38,6 +38,7 @@ use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 
 class ProductResource extends Resource
@@ -62,7 +63,7 @@ class ProductResource extends Resource
                 Group::make()->schema([
                     Section::make('')
                         ->schema([
-                            Hidden::make('created_by')->default(auth()->user()->id),
+                            Hidden::make('created_by')->default(Auth::user()->id),
                             TextInput::make('name')
                                 ->required()
                                 ->minLength(3)
@@ -116,6 +117,7 @@ class ProductResource extends Resource
 
                     Section::make('Images')
                         ->schema([
+
                             FileUpload::make('images')
                                 ->multiple()
                                 ->disk('public')
@@ -220,7 +222,8 @@ class ProductResource extends Resource
                                 ->hidden(fn(Get $get) =>  $get('is_sale') ? false : true),
                         ])->collapsible(true),
                 ])->columnSpan(1)->columns(1),
-            ])->columns(3);
+            ])->columns(3)
+            ->lazy();
     }
 
     public static function table(Table $table): Table
