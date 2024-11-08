@@ -19,6 +19,8 @@ class OrdersChart extends ChartWidget
 
     public static ?int $sort = 3;
 
+    protected static ?string $pollingInterval = '30s';
+
     protected function getFilters(): ?array
     {
         return [
@@ -104,12 +106,12 @@ class OrdersChart extends ChartWidget
             'datasets' => [
                 [
                     'label' => 'Orders',
-                    'data' => $data->map(fn (TrendValue $value) => $value->aggregate),
+                    'data' => $data->map(fn(TrendValue $value) => $value->aggregate),
                     'backgroundColor' => '#36A2EB',
                     'borderColor' => '#9BD0F5',
                 ],
             ],
-            'labels' => $data->map(fn (TrendValue $value) => $value->date),
+            'labels' => $data->map(fn(TrendValue $value) => $value->date),
         ];
     }
 
